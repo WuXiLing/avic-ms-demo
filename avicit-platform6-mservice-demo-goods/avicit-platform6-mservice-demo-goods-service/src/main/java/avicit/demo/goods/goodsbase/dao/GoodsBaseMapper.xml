@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.demo.goods.goodsbase.dao.GoodsBaseDao">
+
+<resultMap id="GoodsBaseDTOMap" type="avicit.demo.goods.goodsbase.dto.GoodsBaseDTO">
+		<result property="id" column="ID" jdbcType="VARCHAR" />
+		<result property="code" column="CODE" jdbcType="VARCHAR" />
+		<result property="name" column="NAME" jdbcType="VARCHAR" />
+		<result property="price" column="PRICE" jdbcType="DECIMAL" />
+		<result property="descriptionShort" column="DESCRIPTION_SHORT" jdbcType="VARCHAR" />
+		<result property="thumb" column="THUMB" jdbcType="BLOB" />
+		<result property="status" column="STATUS" jdbcType="VARCHAR" />
+		<result property="orgId" column="ORG_ID" jdbcType="VARCHAR" />
+		<result property="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+		<result property="sysId" column="SYS_ID" jdbcType="VARCHAR" />
+		<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+		<result property="sysApplicationId" column="SYS_APPLICATION_ID" jdbcType="VARCHAR" />
+		<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+		<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+		<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+		<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+		<result property="version" column="VERSION" jdbcType="DECIMAL" />
+		<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+		<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+		<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+		<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+		<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+		<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+		<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+		<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+		<result property="attribute09" column="ATTRIBUTE_09" jdbcType="TIMESTAMP" />
+		<result property="attribute10" column="ATTRIBUTE_10" jdbcType="TIMESTAMP" />
+		<result property="attribute11" column="ATTRIBUTE_11" jdbcType="DECIMAL" />
+		<result property="attribute12" column="ATTRIBUTE_12" jdbcType="DECIMAL" />
+		<result property="attribute13" column="ATTRIBUTE_13" jdbcType="DECIMAL" />
+		<result property="attribute14" column="ATTRIBUTE_14" jdbcType="DECIMAL" />
+		<result property="attribute15" column="ATTRIBUTE_15" jdbcType="DECIMAL" />
+</resultMap>
+<!-- 分页查询 GOODS_BASE -->
+<select id="searchGoodsBaseByPage" parameterType="java.util.Map" resultMap="GoodsBaseDTOMap">
+	select
+		t1.id                             ,
+		t1.code                           ,
+		t1.name                           ,
+		t1.price                          ,
+		t1.description_short              ,
+		t1.thumb                          ,
+		t1.status                         ,
+		t1.org_id                         ,
+		t1.dept_id                        ,
+		t1.sys_id                         ,
+		t1.secret_level                   ,
+		t1.sys_application_id             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   
+	from goods_base 	t1
+		<where>
+			<if test="bean != null">
+			<if test="bean.id != null and bean.id != ''">
+				and t1.ID =#{bean.id}
+			</if>
+			<if test="bean.code != null and bean.code != ''">
+				and t1.CODE like concat(concat('%',#{bean.code}),'%') 
+			</if>
+			<if test="bean.name != null and bean.name != ''">
+				and t1.NAME like concat(concat('%',#{bean.name}),'%') 
+			</if>
+			<if test="bean.price != null ">
+				and t1.PRICE like concat(concat('%',#{bean.price}),'%') 
+			</if>
+			<if test="bean.descriptionShort != null and bean.descriptionShort != ''">
+				and t1.DESCRIPTION_SHORT like concat(concat('%',#{bean.descriptionShort}),'%') 
+			</if>
+			<!-- <if test="bean.thumb != null and bean.thumb != ''">
+				and t1.THUMB like concat(concat('%',#{bean.thumb}),'%') 
+			</if> -->
+			<if test="bean.status != null and bean.status != ''">
+				and t1.STATUS = #{bean.status}
+			</if>
+			<if test="bean.orgId != null and bean.orgId != ''">
+				and t1.ORG_ID like concat(concat('%',#{bean.orgId}),'%') 
+			</if>
+			<if test="bean.deptId != null and bean.deptId != ''">
+				and t1.DEPT_ID like concat(concat('%',#{bean.deptId}),'%') 
+			</if>
+			<if test="bean.sysId != null and bean.sysId != ''">
+				and t1.SYS_ID like concat(concat('%',#{bean.sysId}),'%') 
+			</if>
+			<if test="bean.secretLevel != null and bean.secretLevel != ''">
+				and t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%') 
+			</if>
+			<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+				and t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%') 
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				and t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%') 
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				and t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%') 
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%') 
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%') 
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%') 
+			</if>
+			<if test="bean.version != null ">
+				and t1.VERSION like concat(concat('%',#{bean.version}),'%') 
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%') 
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%') 
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%') 
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%') 
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%') 
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%') 
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%') 
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%') 
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%') 
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%') 
+			</if>
+			<if test="bean.attribute11 != null ">
+				and t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%') 
+			</if>
+			<if test="bean.attribute12 != null ">
+				and t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%') 
+			</if>
+			<if test="bean.attribute13 != null ">
+				and t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%') 
+			</if>
+			<if test="bean.attribute14 != null ">
+				and t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%') 
+			</if>
+			<if test="bean.attribute15 != null ">
+				and t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%') 
+			</if>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 分页查询 OrGOODS_BASE -->
+<select id="searchGoodsBaseByPageOr" parameterType="java.util.Map" resultMap="GoodsBaseDTOMap">
+	select
+		t1.id                             ,
+		t1.code                           ,
+		t1.name                           ,
+		t1.price                          ,
+		t1.description_short              ,
+		t1.thumb                          ,
+		t1.status                         ,
+		t1.org_id                         ,
+		t1.dept_id                        ,
+		t1.sys_id                         ,
+		t1.secret_level                   ,
+		t1.sys_application_id             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   
+	from goods_base 	t1
+		<where>
+			<if test="bean != null">
+			<trim prefix="(" suffix=")" prefixOverrides="or">
+			<if test="bean.id != null and bean.id != ''">
+				or t1.ID =#{bean.id}
+			</if>
+			<if test="bean.code != null and bean.code != ''">
+				or t1.CODE like concat(concat('%',#{bean.code}),'%')  
+			</if>
+			<if test="bean.name != null and bean.name != ''">
+				or t1.NAME like concat(concat('%',#{bean.name}),'%')  
+			</if>
+			<if test="bean.price != null">
+				or t1.PRICE like concat(concat('%',#{bean.price}),'%')  
+			</if>
+			<if test="bean.descriptionShort != null and bean.descriptionShort != ''">
+				or t1.DESCRIPTION_SHORT like concat(concat('%',#{bean.descriptionShort}),'%')  
+			</if>
+			<!-- <if test="bean.thumb != null and bean.thumb != ''">
+				or t1.THUMB like concat(concat('%',#{bean.thumb}),'%')  
+			</if> -->
+			<if test="bean.status != null and bean.status != ''">
+				or t1.STATUS like concat(concat('%',#{bean.status}),'%')  
+			</if>
+			<if test="bean.orgId != null and bean.orgId != ''">
+				or t1.ORG_ID like concat(concat('%',#{bean.orgId}),'%')  
+			</if>
+			<if test="bean.deptId != null and bean.deptId != ''">
+				or t1.DEPT_ID like concat(concat('%',#{bean.deptId}),'%')  
+			</if>
+			<if test="bean.sysId != null and bean.sysId != ''">
+				or t1.SYS_ID like concat(concat('%',#{bean.sysId}),'%')  
+			</if>
+			<if test="bean.secretLevel != null and bean.secretLevel != ''">
+				or t1.SECRET_LEVEL like concat(concat('%',#{bean.secretLevel}),'%')  
+			</if>
+			<if test="bean.sysApplicationId != null and bean.sysApplicationId != ''">
+				or t1.SYS_APPLICATION_ID like concat(concat('%',#{bean.sysApplicationId}),'%')  
+			</if>
+			<if test="bean.createdBy != null and bean.createdBy != ''">
+				or t1.CREATED_BY like concat(concat('%',#{bean.createdBy}),'%')  
+			</if>
+			<if test="bean.creationDate != null and bean.creationDate != ''">
+				or t1.CREATION_DATE like concat(concat('%',#{bean.creationDate}),'%')  
+			</if>
+			<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+				or t1.LAST_UPDATED_BY like concat(concat('%',#{bean.lastUpdatedBy}),'%')  
+			</if>
+			<if test="bean.lastUpdateDate != null and bean.lastUpdateDate != ''">
+				or t1.LAST_UPDATE_DATE like concat(concat('%',#{bean.lastUpdateDate}),'%')  
+			</if>
+			<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+				or t1.LAST_UPDATE_IP like concat(concat('%',#{bean.lastUpdateIp}),'%')  
+			</if>
+			<if test="bean.version != null">
+				or t1.VERSION like concat(concat('%',#{bean.version}),'%')  
+			</if>
+			<if test="bean.attribute01 != null and bean.attribute01 != ''">
+				or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')  
+			</if>
+			<if test="bean.attribute02 != null and bean.attribute02 != ''">
+				or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')  
+			</if>
+			<if test="bean.attribute03 != null and bean.attribute03 != ''">
+				or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')  
+			</if>
+			<if test="bean.attribute04 != null and bean.attribute04 != ''">
+				or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')  
+			</if>
+			<if test="bean.attribute05 != null and bean.attribute05 != ''">
+				or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')  
+			</if>
+			<if test="bean.attribute06 != null and bean.attribute06 != ''">
+				or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')  
+			</if>
+			<if test="bean.attribute07 != null and bean.attribute07 != ''">
+				or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')  
+			</if>
+			<if test="bean.attribute08 != null and bean.attribute08 != ''">
+				or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')  
+			</if>
+			<if test="bean.attribute09 != null and bean.attribute09 != ''">
+				or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')  
+			</if>
+			<if test="bean.attribute10 != null and bean.attribute10 != ''">
+				or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')  
+			</if>
+			<if test="bean.attribute11 != null">
+				or t1.ATTRIBUTE_11 like concat(concat('%',#{bean.attribute11}),'%')  
+			</if>
+			<if test="bean.attribute12 != null">
+				or t1.ATTRIBUTE_12 like concat(concat('%',#{bean.attribute12}),'%')  
+			</if>
+			<if test="bean.attribute13 != null">
+				or t1.ATTRIBUTE_13 like concat(concat('%',#{bean.attribute13}),'%')  
+			</if>
+			<if test="bean.attribute14 != null">
+				or t1.ATTRIBUTE_14 like concat(concat('%',#{bean.attribute14}),'%')  
+			</if>
+			<if test="bean.attribute15 != null">
+				or t1.ATTRIBUTE_15 like concat(concat('%',#{bean.attribute15}),'%')  
+			</if>
+			</trim>
+			</if>
+		</where>
+		<choose>
+			<when test="pOrderBy != null and pOrderBy != ''">
+				order by ${pOrderBy}			
+			</when>
+			<otherwise>
+				order by t1.creation_date desc
+			</otherwise>
+		</choose>
+</select>
+<!-- 查询列表 GOODS_BASE -->
+<select id="searchGoodsBase" parameterType="java.util.Map" resultMap="GoodsBaseDTOMap">
+	select
+		t1.id                             ,
+		t1.code                           ,
+		t1.name                           ,
+		t1.price                          ,
+		t1.description_short              ,
+		t1.thumb                          ,
+		t1.status                         ,
+		t1.org_id                         ,
+		t1.dept_id                        ,
+		t1.sys_id                         ,
+		t1.secret_level                   ,
+		t1.sys_application_id             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   
+	from goods_base 	t1
+		<where>
+			<if test="id != null and id != ''">
+				and t1.ID =#{id}
+			</if>
+			<if test="code != null and code != ''">
+				and t1.CODE =#{code}
+			</if>
+			<if test="name != null and name != ''">
+				and t1.NAME =#{name}
+			</if>
+			<if test="price != null">
+				and t1.PRICE =#{price}
+			</if>
+			<if test="descriptionShort != null and descriptionShort != ''">
+				and t1.DESCRIPTION_SHORT =#{descriptionShort}
+			</if>
+			<!-- <if test="thumb != null and thumb != ''">
+				and t1.THUMB =#{thumb}
+			</if> -->
+			<if test="status != null and status != ''">
+				and t1.STATUS =#{status}
+			</if>
+			<if test="orgId != null and orgId != ''">
+				and t1.ORG_ID =#{orgId}
+			</if>
+			<if test="deptId != null and deptId != ''">
+				and t1.DEPT_ID =#{deptId}
+			</if>
+			<if test="sysId != null and sysId != ''">
+				and t1.SYS_ID =#{sysId}
+			</if>
+			<if test="secretLevel != null and secretLevel != ''">
+				and t1.SECRET_LEVEL =#{secretLevel}
+			</if>
+			<if test="sysApplicationId != null and sysApplicationId != ''">
+				and t1.SYS_APPLICATION_ID =#{sysApplicationId}
+			</if>
+			<if test="createdBy != null and createdBy != ''">
+				and t1.CREATED_BY =#{createdBy}
+			</if>
+			<if test="creationDate != null and creationDate != ''">
+				and t1.CREATION_DATE =#{creationDate}
+			</if>
+			<if test="lastUpdatedBy != null and lastUpdatedBy != ''">
+				and t1.LAST_UPDATED_BY =#{lastUpdatedBy}
+			</if>
+			<if test="lastUpdateDate != null and lastUpdateDate != ''">
+				and t1.LAST_UPDATE_DATE =#{lastUpdateDate}
+			</if>
+			<if test="lastUpdateIp != null and lastUpdateIp != ''">
+				and t1.LAST_UPDATE_IP =#{lastUpdateIp}
+			</if>
+			<if test="version != null">
+				and t1.VERSION =#{version}
+			</if>
+			<if test="attribute01 != null and attribute01 != ''">
+				and t1.ATTRIBUTE_01 =#{attribute01}
+			</if>
+			<if test="attribute02 != null and attribute02 != ''">
+				and t1.ATTRIBUTE_02 =#{attribute02}
+			</if>
+			<if test="attribute03 != null and attribute03 != ''">
+				and t1.ATTRIBUTE_03 =#{attribute03}
+			</if>
+			<if test="attribute04 != null and attribute04 != ''">
+				and t1.ATTRIBUTE_04 =#{attribute04}
+			</if>
+			<if test="attribute05 != null and attribute05 != ''">
+				and t1.ATTRIBUTE_05 =#{attribute05}
+			</if>
+			<if test="attribute06 != null and attribute06 != ''">
+				and t1.ATTRIBUTE_06 =#{attribute06}
+			</if>
+			<if test="attribute07 != null and attribute07 != ''">
+				and t1.ATTRIBUTE_07 =#{attribute07}
+			</if>
+			<if test="attribute08 != null and attribute08 != ''">
+				and t1.ATTRIBUTE_08 =#{attribute08}
+			</if>
+			<if test="attribute09 != null and attribute09 != ''">
+				and t1.ATTRIBUTE_09 =#{attribute09}
+			</if>
+			<if test="attribute10 != null and attribute10 != ''">
+				and t1.ATTRIBUTE_10 =#{attribute10}
+			</if>
+			<if test="attribute11 != null">
+				and t1.ATTRIBUTE_11 =#{attribute11}
+			</if>
+			<if test="attribute12 != null">
+				and t1.ATTRIBUTE_12 =#{attribute12}
+			</if>
+			<if test="attribute13 != null">
+				and t1.ATTRIBUTE_13 =#{attribute13}
+			</if>
+			<if test="attribute14 != null">
+				and t1.ATTRIBUTE_14 =#{attribute14}
+			</if>
+			<if test="attribute15 != null">
+				and t1.ATTRIBUTE_15 =#{attribute15}
+			</if>
+		</where>
+</select>
+<!-- 主键查询对象 GOODS_BASE -->
+<select id="findGoodsBaseById" parameterType="java.util.Map" resultMap="GoodsBaseDTOMap">
+	select
+		t1.id                             ,
+		t1.code                           ,
+		t1.name                           ,
+		t1.price                          ,
+		t1.description_short              ,
+		t1.thumb                          ,
+		t1.status                         ,
+		t1.org_id                         ,
+		t1.dept_id                        ,
+		t1.sys_id                         ,
+		t1.secret_level                   ,
+		t1.sys_application_id             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15                   
+	from goods_base 	t1
+		where t1.id = #{id}
+</select>
+
+<!-- 商品名查询对象 GOODS_BASE -->
+<select id="findGoodsBaseByName" parameterType="java.util.Map" resultMap="GoodsBaseDTOMap">
+	select
+		t1.id                             ,
+		t1.code                           ,
+		t1.name                           ,
+		t1.price                          ,
+		t1.description_short              ,
+		t1.thumb                          ,
+		t1.status                         ,
+		t1.org_id                         ,
+		t1.dept_id                        ,
+		t1.sys_id                         ,
+		t1.secret_level                   ,
+		t1.sys_application_id             ,
+		t1.created_by                     ,
+		t1.creation_date                  ,
+		t1.last_updated_by                ,
+		t1.last_update_date               ,
+		t1.last_update_ip                 ,
+		t1.version                        ,
+		t1.attribute_01                   ,
+		t1.attribute_02                   ,
+		t1.attribute_03                   ,
+		t1.attribute_04                   ,
+		t1.attribute_05                   ,
+		t1.attribute_06                   ,
+		t1.attribute_07                   ,
+		t1.attribute_08                   ,
+		t1.attribute_09                   ,
+		t1.attribute_10                   ,
+		t1.attribute_11                   ,
+		t1.attribute_12                   ,
+		t1.attribute_13                   ,
+		t1.attribute_14                   ,
+		t1.attribute_15
+	from goods_base 	t1
+		where t1.name = #{name}
+</select>
+
+<!-- 新增对象 GOODS_BASE -->
+<insert id="insertGoodsBase" parameterType="avicit.demo.goods.goodsbase.dto.GoodsBaseDTO">
+	insert into goods_base
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="code != null">
+				code,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="price != null">
+				price,
+			</if>
+			<if test="descriptionShort != null">
+				description_short,
+			</if>
+			<if test="thumb != null">
+				thumb,
+			</if>
+			<if test="status != null">
+				status,
+			</if>
+			<if test="orgId != null">
+				org_id,
+			</if>
+			<if test="deptId != null">
+				dept_id,
+			</if>
+			<if test="sysId != null">
+				sys_id,
+			</if>
+			<if test="secretLevel != null">
+				secret_level,
+			</if>
+			<if test="sysApplicationId != null">
+				sys_application_id,
+			</if>
+			<if test="createdBy != null">
+				created_by,
+			</if>
+			<if test="creationDate != null">
+				creation_date,
+			</if>
+			<if test="lastUpdatedBy != null">
+				last_updated_by,
+			</if>
+			<if test="lastUpdateDate != null">
+				last_update_date,
+			</if>
+			<if test="lastUpdateIp != null">
+				last_update_ip,
+			</if>
+			<if test="version != null">
+				version,
+			</if>
+			<if test="attribute01 != null">
+				attribute_01,
+			</if>
+			<if test="attribute02 != null">
+				attribute_02,
+			</if>
+			<if test="attribute03 != null">
+				attribute_03,
+			</if>
+			<if test="attribute04 != null">
+				attribute_04,
+			</if>
+			<if test="attribute05 != null">
+				attribute_05,
+			</if>
+			<if test="attribute06 != null">
+				attribute_06,
+			</if>
+			<if test="attribute07 != null">
+				attribute_07,
+			</if>
+			<if test="attribute08 != null">
+				attribute_08,
+			</if>
+			<if test="attribute09 != null">
+				attribute_09,
+			</if>
+			<if test="attribute10 != null">
+				attribute_10,
+			</if>
+			<if test="attribute11 != null">
+				attribute_11,
+			</if>
+			<if test="attribute12 != null">
+				attribute_12,
+			</if>
+			<if test="attribute13 != null">
+				attribute_13,
+			</if>
+			<if test="attribute14 != null">
+				attribute_14,
+			</if>
+			<if test="attribute15 != null">
+				attribute_15,
+			</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=VARCHAR},
+			</if>
+			<if test="code != null">
+				#{code,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="price != null">
+				#{price,jdbcType=DECIMAL},
+			</if>
+			<if test="descriptionShort != null">
+				#{descriptionShort,jdbcType=VARCHAR},
+			</if>
+			<if test="thumb != null">
+				#{thumb,jdbcType=BLOB},
+			</if>
+			<if test="status != null">
+				#{status,jdbcType=VARCHAR},
+			</if>
+			<if test="orgId != null">
+				#{orgId,jdbcType=VARCHAR},
+			</if>
+			<if test="deptId != null">
+				#{deptId,jdbcType=VARCHAR},
+			</if>
+			<if test="sysId != null">
+				#{sysId,jdbcType=VARCHAR},
+			</if>
+			<if test="secretLevel != null">
+				#{secretLevel,jdbcType=VARCHAR},
+			</if>
+			<if test="sysApplicationId != null">
+				#{sysApplicationId,jdbcType=VARCHAR},
+			</if>
+			<if test="createdBy != null">
+				#{createdBy,jdbcType=VARCHAR},
+			</if>
+			<if test="creationDate != null">
+				#{creationDate},
+			</if>
+			<if test="lastUpdatedBy != null">
+				#{lastUpdatedBy,jdbcType=VARCHAR},
+			</if>
+			<if test="lastUpdateDate != null">
+				#{lastUpdateDate},
+			</if>
+			<if test="lastUpdateIp != null">
+				#{lastUpdateIp,jdbcType=VARCHAR},
+			</if>
+			<if test="version != null">
+				#{version,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute01 != null">
+				#{attribute01,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute02 != null">
+				#{attribute02,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute03 != null">
+				#{attribute03,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute04 != null">
+				#{attribute04,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute05 != null">
+				#{attribute05,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute06 != null">
+				#{attribute06,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute07 != null">
+				#{attribute07,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute08 != null">
+				#{attribute08,jdbcType=VARCHAR},
+			</if>
+			<if test="attribute09 != null">
+				#{attribute09,jdbcType=DATE},
+			</if>
+			<if test="attribute10 != null">
+				#{attribute10,jdbcType=DATE},
+			</if>
+			<if test="attribute11 != null">
+				#{attribute11,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute12 != null">
+				#{attribute12,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute13 != null">
+				#{attribute13,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute14 != null">
+				#{attribute14,jdbcType=DECIMAL},
+			</if>
+			<if test="attribute15 != null">
+				#{attribute15,jdbcType=DECIMAL},
+			</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 GOODS_BASE -->
+<insert id="insertGoodsBaseList" parameterType="java.util.List">
+	insert into goods_base(
+			id,
+			code,
+			name,
+			price,
+			description_short,
+			thumb,
+			status,
+			org_id,
+			dept_id,
+			sys_id,
+			secret_level,
+			sys_application_id,
+			created_by,
+			creation_date,
+			last_updated_by,
+			last_update_date,
+			last_update_ip,
+			version,
+			attribute_01,
+			attribute_02,
+			attribute_03,
+			attribute_04,
+			attribute_05,
+			attribute_06,
+			attribute_07,
+			attribute_08,
+			attribute_09,
+			attribute_10,
+			attribute_11,
+			attribute_12,
+			attribute_13,
+			attribute_14,
+			attribute_15)
+	<foreach collection="list" item="item" index="index" open="(" separator="union all" close=")">
+		select 
+					#{item.id,jdbcType=VARCHAR},
+					#{item.code,jdbcType=VARCHAR},
+					#{item.name,jdbcType=VARCHAR},
+					#{item.price,jdbcType=DECIMAL},
+					#{item.descriptionShort,jdbcType=VARCHAR},
+					#{item.thumb,jdbcType=BLOB},
+					#{item.status,jdbcType=VARCHAR},
+					#{item.orgId,jdbcType=VARCHAR},
+					#{item.deptId,jdbcType=VARCHAR},
+					#{item.sysId,jdbcType=VARCHAR},
+					#{item.secretLevel,jdbcType=VARCHAR},
+					#{item.sysApplicationId,jdbcType=VARCHAR},
+					#{item.createdBy,jdbcType=VARCHAR},
+					#{item.creationDate},
+					#{item.lastUpdatedBy,jdbcType=VARCHAR},
+					#{item.lastUpdateDate},
+					#{item.lastUpdateIp,jdbcType=VARCHAR},
+					#{item.version,jdbcType=DECIMAL},
+					#{item.attribute01,jdbcType=VARCHAR},
+					#{item.attribute02,jdbcType=VARCHAR},
+					#{item.attribute03,jdbcType=VARCHAR},
+					#{item.attribute04,jdbcType=VARCHAR},
+					#{item.attribute05,jdbcType=VARCHAR},
+					#{item.attribute06,jdbcType=VARCHAR},
+					#{item.attribute07,jdbcType=VARCHAR},
+					#{item.attribute08,jdbcType=VARCHAR},
+					#{item.attribute09,jdbcType=DATE},
+					#{item.attribute10,jdbcType=DATE},
+					#{item.attribute11,jdbcType=DECIMAL},
+					#{item.attribute12,jdbcType=DECIMAL},
+					#{item.attribute13,jdbcType=DECIMAL},
+					#{item.attribute14,jdbcType=DECIMAL},
+					#{item.attribute15,jdbcType=DECIMAL}
+		from dual 
+	</foreach>
+</insert>
+<!-- 更新对象 GOODS_BASE -->
+<update id="updateGoodsBaseSensitive" parameterType="avicit.demo.goods.goodsbase.dto.GoodsBaseDTO">
+	update goods_base 
+	set
+	code                           =#{code,jdbcType=VARCHAR},
+	name                           =#{name,jdbcType=VARCHAR},
+	price                          =#{price,jdbcType=DECIMAL},
+	description_short              =#{descriptionShort,jdbcType=VARCHAR},
+	status                         =#{status,jdbcType=VARCHAR}
+	where id = #{id}
+</update>
+<!-- 更新对象 GOODS_BASE -->
+<update id="updateGoodsBaseAll" parameterType="avicit.demo.goods.goodsbase.dto.GoodsBaseDTO">
+	update goods_base 
+		set
+			code                           =#{code,jdbcType=VARCHAR},
+			name                           =#{name,jdbcType=VARCHAR},
+			price                          =#{price,jdbcType=DECIMAL},
+			description_short              =#{descriptionShort,jdbcType=VARCHAR},
+			thumb                          =#{thumb,jdbcType=BLOB},
+			status                         =#{status,jdbcType=VARCHAR},
+			creation_date                  =#{creationDate},
+			last_update_date               =#{lastUpdateDate},
+			last_update_ip                 =#{lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1
+	where id = #{id} and version =#{version}
+</update>
+<!-- 更新缩略图 GOODS_BASE -->
+<update id="updateGoodsBaseThumb">
+	update goods_base set 
+	    thumb    = #{thumb,jdbcType=BLOB}
+	where id = #{id}
+</update>
+
+<!-- 商品发布 -->
+<update id="goodsReleaseById">
+	update goods_base set status = 1 where id = #{id}
+</update>
+
+
+
+<!-- 获取缩略图 GOODS_BASE -->
+<select id="getGoodsBaseThumb">
+	select thumb from goods_base 
+	where id = #{id}
+</select>
+
+<!-- 根据商品编码查询商品ID -->
+<select id="getGoodsIdBaseByCode" resultType="String">
+	select id from goods_base 
+	where code = #{code}
+</select>
+
+<!-- 批量更新对象   GOODS_BASE -->
+<update id="updateGoodsBaseList" parameterType="java.util.List">
+	<foreach collection="dtoList" item="item" index="index" open="begin" separator="" close="end;">
+	update goods_base 
+		set
+			code                           =#{item.code,jdbcType=VARCHAR},
+			name                           =#{item.name,jdbcType=VARCHAR},
+			price                          =#{item.price,jdbcType=DECIMAL},
+			description_short              =#{item.descriptionShort,jdbcType=VARCHAR},
+			thumb                          =#{item.thumb,jdbcType=BLOB},
+			status                         =#{item.status,jdbcType=VARCHAR},
+			creation_date                  =#{item.creationDate},
+			last_update_date               =#{item.lastUpdateDate},
+			last_update_ip                 =#{item.lastUpdateIp,jdbcType=VARCHAR},
+			version                        =version+1,
+		where id = #{item.id} and version =#{item.version};
+	</foreach>
+</update>
+
+<!-- 主键删除 GOODS_BASE -->
+<delete id="deleteGoodsBaseById" parameterType="java.lang.String">
+		delete from goods_base  where  id = #{id}
+</delete>
+<!-- 批量主键删除 GOODS_BASE -->
+<delete id="deleteGoodsBaseList" parameterType="java.util.List">
+		delete from goods_base  t1
+		<where>
+			<foreach item="idItem" collection="list" open="(" separator="or" close=")">
+				t1.id = #{idItem}
+			</foreach>
+		</where>
+</delete>
+</mapper>

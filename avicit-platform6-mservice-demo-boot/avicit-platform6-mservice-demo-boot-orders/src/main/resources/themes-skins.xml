@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#############################################################
+##
+## 	服务器门户外观样式配置文件
+##
+################################# ############################
+-->
+<avicit-config> 
+   <themes-skins> 
+      <type-name>H+</type-name>  
+      <type-key>oa</type-key>  
+      <preview>avicit/platform6/portal/themes/oa/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.oa.impl.PortalThemesSkinsOAImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/oa/jsp/index.jsp</index-jsp> 
+      <default>true</default> 
+      <skins>
+      	<skin key="dark-blue" comment="黑蓝" color="#2b3b4b" default="true"/>
+      	<skin key="oa-blue" comment="OA蓝" color="#145c98" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>简约</type-name>  
+      <type-key>simple</type-key>  
+      <preview>avicit/platform6/portal/themes/simple/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.simple.impl.PortalThemesSkinsSimpleImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/simple/jsp/index.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+      	<skin key="green" comment="简约-绿" color="#01b84a" default="true"/>
+      	<skin key="orange" comment="简约-橙" color="#f29323" default="false"/>
+      	<skin key="purple" comment="简约-紫" color="#6f4aba" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>传统</type-name>  
+      <type-key>default</type-key>  
+      <preview>avicit/platform6/portal/themes/default/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.def.impl.PortalThemesSkinsDefaultImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/default/jsp/index.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+      	<skin key="dark" comment="传统-黑" color="#2a303e" default="true"/>
+      	<skin key="blue" comment="传统-蓝" color="#0081cc" default="false"/>
+      	<skin key="cyan" comment="传统-青" color="#00b3af" default="false"/>
+      </skins>
+   </themes-skins>
+   <themes-skins> 
+      <type-name>Win</type-name>  
+      <type-key>win</type-key>  
+      <preview>avicit/platform6/portal/themes/win/images/preview.png</preview>  
+      <impl>avicit.platform6.msystem.portal.skins.win.impl.PortalThemesSkinsWinImpl</impl> 
+      <index-jsp>avicit/platform6/portal/themes/win/jsp/index.jsp</index-jsp> 
+      <default>false</default> 
+      <skins>
+      	<skin key="black" comment="默认" color="#0099cc" default="true"/>
+      </skins>
+   </themes-skins>
+</avicit-config>

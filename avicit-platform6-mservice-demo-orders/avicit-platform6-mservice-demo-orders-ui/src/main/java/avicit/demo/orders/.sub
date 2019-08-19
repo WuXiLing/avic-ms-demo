@@ -1,0 +1,8 @@
+assembly.id=null
+assembly.name=订单信息
+assembly.version=avicit/demo/orders
+assembly.type=null
+assembly.modules=
+assembly.service=
+assembly.dao=
+assembly.auto=false

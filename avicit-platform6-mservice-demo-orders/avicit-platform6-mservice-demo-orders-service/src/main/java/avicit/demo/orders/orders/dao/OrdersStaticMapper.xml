@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.demo.orders.orders.dao.OrdersStaticDao">
+    <resultMap id="OrdersRankMap" type="avicit.demo.orders.orders.vo.GoodsRankVo">
+        <result property="goodsId" column="GOODS_ID" jdbcType="VARCHAR"/>
+        <result property="sales" column="SALES" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <resultMap id="TotalSalesAspectVoMap" type="avicit.demo.orders.orders.vo.TotalSalesAspectVo">
+        <result property="rowKey" column="rowKey" jdbcType="VARCHAR"/>
+        <result property="sales" column="SALES" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <resultMap id="TotalOrdersAspectVoMap" type="avicit.demo.orders.orders.vo.TotalOrdersAspectVo">
+        <result property="rowKey" column="rowKey" jdbcType="VARCHAR"/>
+        <result property="orders" column="ORDERS" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--  排行榜-->
+    <select id="staticGoodsRank" resultMap="OrdersRankMap">
+		SELECT SUM(GOODS_PRICE) AS SALES, GOODS_ID
+        FROM orders
+        WHERE STATUS = 0
+        GROUP BY GOODS_ID
+        ORDER BY SALES DESC
+	</select>
+
+    <!--  总销售额-->
+    <select id="getGoodsTotalSales" resultType="java.math.BigDecimal">
+		SELECT SUM(GOODS_PRICE) FROM ORDERS WHERE STATUS = 0
+	</select>
+
+    <!--  有效订单数-->
+    <select id="getEffectiveOrdersNum" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM ORDERS WHERE  STATUS = 0
+	</select>
+
+    <!--  支付笔数-->
+    <select id="getPayedOrdersNum" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM ORDERS WHERE STATUS = 0
+	</select>
+
+    <!--  按 本年、本月、本周、今日统计销售额-->
+    <select id="getTotalSalesByAspect" parameterType="java.lang.String" resultMap="TotalSalesAspectVoMap">
+        <choose>
+            <when test="aspect == 'curYear'">
+                SELECT SUM(GOODS_PRICE) AS sales, to_char(pay_time, 'MM') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'yyyy') = to_char(sysdate, 'yyyy')
+                GROUP BY to_char(pay_time, 'MM')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curMonth'">
+                SELECT SUM(GOODS_PRICE) AS sales, to_char(pay_time, 'DD') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-MM') = to_char(sysdate, 'YYYY-MM')
+                GROUP BY to_char(pay_time, 'DD')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curWeek'">
+                SELECT SUM(GOODS_PRICE) AS sales, to_char(pay_time, 'DD') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-IW') = to_char(sysdate, 'YYYY-IW')
+                GROUP BY to_char(pay_time, 'DD')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curDay'">
+                SELECT SUM(GOODS_PRICE) AS sales, to_char(pay_time, 'HH') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-MM-DD') = to_char(sysdate, 'YYYY-MM-DD')
+                GROUP BY to_char(pay_time, 'HH')
+                ORDER BY rowKey ASC
+            </when>
+            <!--			<otherwise>-->
+            <!--				//...-->
+            <!--			</otherwise>-->
+        </choose>
+    </select>
+
+    <!--  按 本年、本月、本周、今日统计下单量-->
+    <select id="getOrdersByAspect" parameterType="java.lang.String" resultMap="TotalOrdersAspectVoMap">
+        <choose>
+            <when test="aspect == 'curYear'">
+                SELECT count(*) AS orders, to_char(pay_time, 'MM') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'yyyy') = to_char(sysdate, 'yyyy')
+                GROUP BY to_char(pay_time, 'MM')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curMonth'">
+                SELECT count(*) AS orders, to_char(pay_time, 'DD') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-MM') = to_char(sysdate, 'YYYY-MM')
+                GROUP BY to_char(pay_time, 'DD')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curWeek'">
+                SELECT count(*) AS orders, to_char(pay_time, 'DD') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-IW') = to_char(sysdate, 'YYYY-IW')
+                GROUP BY to_char(pay_time, 'DD')
+                ORDER BY rowKey ASC
+            </when>
+            <when test="aspect == 'curDay'">
+                SELECT count(*) AS orders, to_char(pay_time, 'HH') AS rowKey
+                FROM ORDERS
+                WHERE STATUS = 0
+                    AND to_char(pay_time, 'YYYY-MM-DD') = to_char(sysdate, 'YYYY-MM-DD')
+                GROUP BY to_char(pay_time, 'HH')
+                ORDER BY rowKey ASC
+            </when>
+        </choose>
+    </select>
+</mapper>

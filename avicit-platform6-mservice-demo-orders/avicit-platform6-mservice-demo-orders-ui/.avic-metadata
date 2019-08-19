@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<project-module archive="orders-ui.war" context-root="/orders-ui" id="eclipse.1559355261511" j2ee-spec="5.0" name="orders-ui" type="WEB">
+    <attributes>
+        <attribute name="webdir" value="src\main\webapp"/>
+        <attribute name="javadir" value="src\main\java"/>
+        <attribute name="protype" value="maven"/>
+        <attribute name="servicetype" value="zookeeper"/>
+        <attribute name="layertype" value="ui"/>
+        <attribute name="parentName" value="orders"/>
+    </attributes>
+</project-module>

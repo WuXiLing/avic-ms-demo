@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} "${appName}" [%thread] %X{traceId} %X{spanId} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/platform6.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} "${appName}" [%thread] %X{traceId} %X{spanId} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>logs/platform6_error.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} "${appName}" [%thread] %X{traceId} %X{spanId} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+    </appender>
+
+
+    <appender name="menuAPI" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>logs/platform6_menu.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+    </appender>
+
+    <logger name="avicit.platform6.api.sysmenu.impl" level="info">
+
+        <appender-ref ref="menuAPI"/>
+    </logger>
+
+    <appender name="menuMigrateLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>info</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+
+            <fileNamePattern>logs/platform6_menu_migrate.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+
+    </appender>
+
+
+    <logger name="menu move" level="info">
+        <appender-ref ref="menuMigrateLog"/>
+    </logger>
+
+    <logger name="avicit" level="info"/>
+
+    <timestamp key="TIMESTAMP" datePattern="yyyy-MM-dd" />
+    <property name="LOGPATH" value="log" />
+    
+    <springProperty scope="context" name="appName" source="server.Name" defaultValue="ecommerce-goods"/> 
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender"> 
+        <param name="Encoding" value="UTF-8"/> 
+        <remoteHost>117.36.76.70</remoteHost> 
+        <port>55044</port> 
+       <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" > 
+           <customFields>{"ServiceName":"${appName}"}</customFields> 
+        </encoder> 
+        <keepAliveDuration>2 minutes</keepAliveDuration> 
+    </appender>
+	 
+    <root level="info">
+        <appender-ref ref="console"/>
+        <appender-ref ref="rollingFile"/>
+        <appender-ref ref="errorFile"/>
+	<appender-ref ref="logstash"/>
+    </root>
+</configuration>

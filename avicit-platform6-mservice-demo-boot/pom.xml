@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<groupId>avicit.platform6</groupId>
+		<artifactId>avicit-platform6-mservice-demo</artifactId>
+		<version>6.3.5-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>avicit-platform6-mservice-demo-boot</artifactId>
+	<packaging>pom</packaging>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${springboot-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-api</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-restadmin</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<!-- 微服务 -->
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-service-starter</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>${maven-war-plugin-version}</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<useCache>false</useCache>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+    <modules>
+        <module>avicit-platform6-mservice-demo-boot-stock</module>
+		<module>avicit-platform6-mservice-demo-boot-orders</module>
+        <module>avicit-platform6-mservice-demo-boot-goods</module>
+  </modules>
+</project>

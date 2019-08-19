@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>avicit.platform6</groupId>
+		<artifactId>avicit-platform6-mservice-demo-stock</artifactId>
+		<version>6.3.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>avicit-platform6-mservice-demo-stock-pub</artifactId>
+	<name>avicit-platform6-mservice-demo-stock-pub</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+	</properties>
+	<dependencies>
+	    <dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-mservice-demo-goods-pub</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	    <!-- BeanDto单独抽出来 -->
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-core</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+	</dependencies>
+	<description>组件的公共项目，包括组件的DTO等资源</description>
+</project>

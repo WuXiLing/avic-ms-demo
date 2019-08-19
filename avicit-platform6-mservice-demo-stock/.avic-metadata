@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<project-module archive="stock.war" context-root="/stock" id="eclipse.1559358998042" j2ee-spec="5.0" name="stock" type="WEB">
+    <attributes>
+        <attribute name="protype" value="maven"/>
+        <attribute name="servicetype" value="zookeeper"/>
+        <attribute name="layertype" value="parent"/>
+        <attribute name="parentName" value="stock"/>
+    </attributes>
+</project-module>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="restClientConfigData" class="avicit.platform6.core.rest.client.RestClientConfigData">
+        <property name="systemid" value="${rest.systemid}"></property>
+        <property name="username" value="${rest.username}"></property>
+        <property name="password" value="${rest.password}"></property>
+        <property name="isServer" value="${rest.isServer}"></property>
+        <property name="restHostMap">
+            <map>
+                <!-- 默认 -->
+                <entry key="main" value="${rest.msystem.host}"></entry>
+                <!-- 大用户模块,包括user,dept,org,group,role,通用选择框 ,密码管理等-->
+                <entry key="sysuser" value="${rest.msystem.host}"></entry>
+                <!-- 首页,包括menu,portal -->
+                <entry key="sysmenu" value="${rest.msystem.host}"></entry>
+                <!-- 资源授权,包括resource,accesscontrol,数据权限等 -->
+                <entry key="sysresource" value="${rest.msystem.host}"></entry>
+                <!-- 多应用 -->
+                <entry key="sysapplication" value="${rest.msystem.host}"></entry>
+                <!-- 多应用授权 -->
+                <entry key="sysapprole" value="${rest.msystem.host}"></entry>
+                <!-- 多语言 -->
+                <entry key="syslanguage" value="${rest.msystem.host}"></entry>
+                <!-- 通用代码 -->
+                <entry key="syslookup" value="${rest.msystem.host}"></entry>
+                <!-- 系统参数 -->
+                <entry key="sysprofile" value="${rest.msystem.host}"></entry>
+                <!-- 个人惯用设置 -->
+                <entry key="syscustomed" value="${rest.msystem.host}"></entry>
+                <!-- 消息 -->
+                <entry key="sysmessage" value="${rest.msystem.host}"></entry>
+                <!-- 首页布局 -->
+                <entry key="sysPortal" value="${rest.msystem.host}"></entry>
+                <!-- 密码模板 -->
+                <entry key="passwordtempletlevel" value="${rest.msystem.host}"></entry>
+                <!-- 用户IP限制-->
+                <entry key="userlimitip" value="${rest.msystem.host}"></entry>
+                <entry key="bizlog" value="${rest.msystem.host}"></entry>
+                <entry key="syslog" value="${rest.msystem.host}"></entry>
+                <entry key="restmanage" value="${rest.msystem.host}"></entry>
+                <entry key="syshirosecurity" value="${rest.msystem.host}"></entry>
+                <entry key="search" value="${rest.msystem.host}"></entry>
+                <entry key="quartz" value="${rest.msystem.host}"></entry>
+                <entry key="sanYuan" value="${rest.msystem.host}"></entry>
+                <entry key="expr" value="${rest.msystem.host}"></entry>
+                <entry key="syscoding" value="${rest.msystem.host}"></entry>
+                <entry key="sysattachment" value="${rest.msystem.host}"></entry>
+                <!-- 统一用户组件服务 -->
+                <entry key="sync" value="${rest.msystem.host}"></entry>
+                <entry key="mobile" value="${rest.msystem.host}"></entry>
+                <entry key="yun" value="${rest.msystem.host}"></entry>
+                <entry key="collector" value="${rest.msystem.host}"></entry>
+                <entry key="consoleuser" value="${rest.msystem.host}"></entry>
+                <entry key="consoledept" value="${rest.msystem.host}"></entry>
+                <entry key="consoleorg" value="${rest.msystem.host}"></entry>
+                <entry key="consolerole" value="${rest.msystem.host}"></entry>
+                <entry key="consoleposition" value="${rest.msystem.host}"></entry>
+                <entry key="consolegroup" value="${rest.msystem.host}"></entry>
+                <entry key="consoleothemesskins" value="${rest.msystem.host}"></entry>
+                <entry key="syspersonalmenu" value="${rest.msystem.host}"></entry>
+                <!-- 消息 oa -->
+                <entry key="sysmsg" value="${rest.msystem.host}"></entry>
+                <entry key="connectcenter" value="${rest.msystem.host}"></entry>
+                <entry key="migrate" value="${rest.msystem.host}"></entry>
+                <entry key="demo" value="${rest.msystem.host}"></entry>
+                <!--集中管控部署模式下  流程的服务地址 需要修改为 自己业务系统暴露的地址-->
+                <entry key="bpmengine" value="${rest.bpm.host}"></entry>
+                <entry key="bpmadmin" value="${rest.bpm.host}"></entry>
+                <entry key="bpmclient" value="${rest.bpm.host}"></entry>
+                <!--集中管控部署模式下  表单的服务地址 需要修改为 自己业务系统暴露的地址-->
+                <entry key="eform" value="${rest.eform.host}"></entry>
+                <entry key="eformclient" value="${rest.eform.host}"></entry>
+                <entry key="db" value="${rest.eform.host}"></entry>
+                <!--Excel导入-->
+                <entry key="imp" value="${rest.msystem.host}"></entry>
+                <!--行数据授权-->
+                <entry key="rowdataauthorization" value="${rest.msystem.host}"></entry>
+                <!--微服务监控日志-->
+                <entry key="monitor" value="${rest.msystem.host}"></entry>
+                <!--API中心-->
+                <entry key="apiCenter" value="${rest.msystem.host}"></entry>
+            </map>
+        </property>
+        <property name="restRemoteMap">
+            <map>
+                <!-- 默认 -->
+                <entry key="main" value="${rest.msystem.remote}"></entry>
+                <!-- 大用户模块,包括user,dept,org,group,role,通用选择框 ,密码管理等-->
+                <entry key="sysuser" value="${rest.msystem.remote}"></entry>
+                <!-- 首页,包括menu,portal -->
+                <entry key="sysmenu" value="${rest.msystem.remote}"></entry>
+                <!-- 资源授权,包括resource,accesscontrol,数据权限等 -->
+                <entry key="sysresource" value="${rest.msystem.remote}"></entry>
+                <!-- 多应用 -->
+                <entry key="sysapplication" value="${rest.msystem.remote}"></entry>
+                <!-- 多应用授权 -->
+                <entry key="sysapprole" value="${rest.msystem.remote}"></entry>
+                <!-- 多语言 -->
+                <entry key="syslanguage" value="${rest.msystem.remote}"></entry>
+                <!-- 通用代码 -->
+                <entry key="syslookup" value="${rest.msystem.remote}"></entry>
+                <!-- 系统参数 -->
+                <entry key="sysprofile" value="${rest.msystem.remote}"></entry>
+                <!-- 个人惯用设置 -->
+                <entry key="syscustomed" value="${rest.msystem.remote}"></entry>
+                <!-- 消息 -->
+                <entry key="sysmessage" value="${rest.msystem.remote}"></entry>
+                <!-- 首页布局 -->
+                <entry key="sysPortal" value="${rest.msystem.remote}"></entry>
+                <!-- 密码模板 -->
+                <entry key="passwordtempletlevel" value="${rest.msystem.remote}"></entry>
+                <!-- 用户IP限制-->
+                <entry key="userlimitip" value="${rest.msystem.remote}"></entry>
+                <entry key="bizlog" value="${rest.msystem.remote}"></entry>
+                <entry key="syslog" value="${rest.msystem.remote}"></entry>
+                <entry key="restmanage" value="${rest.msystem.remote}"></entry>
+                <entry key="syshirosecurity" value="${rest.msystem.remote}"></entry>
+                <entry key="search" value="${rest.msystem.remote}"></entry>
+                <entry key="quartz" value="${rest.msystem.remote}"></entry>
+                <entry key="sanYuan" value="${rest.msystem.remote}"></entry>
+                <entry key="expr" value="${rest.msystem.remote}"></entry>
+                <entry key="syscoding" value="${rest.msystem.remote}"></entry>
+                <entry key="sysattachment" value="${rest.msystem.remote}"></entry>
+                <!-- 统一用户组件服务 -->
+                <entry key="sync" value="${rest.msystem.remote}"></entry>
+                <entry key="mobile" value="${rest.msystem.remote}"></entry>
+                <entry key="yun" value="${rest.msystem.remote}"></entry>
+                <entry key="collector" value="${rest.msystem.remote}"></entry>
+                <entry key="consoleuser" value="${rest.msystem.remote}"></entry>
+                <entry key="consoledept" value="${rest.msystem.remote}"></entry>
+                <entry key="consoleorg" value="${rest.msystem.remote}"></entry>
+                <entry key="consolerole" value="${rest.msystem.remote}"></entry>
+                <entry key="consoleposition" value="${rest.msystem.remote}"></entry>
+                <entry key="consolegroup" value="${rest.msystem.remote}"></entry>
+                <entry key="consoleothemesskins" value="${rest.msystem.remote}"></entry>
+                <entry key="syspersonalmenu" value="${rest.msystem.remote}"></entry>
+                <!-- 消息 oa -->
+                <entry key="sysmsg" value="${rest.msystem.remote}"></entry>
+                <entry key="connectcenter" value="${rest.msystem.remote}"></entry>
+                <entry key="migrate" value="${rest.msystem.remote}"></entry>
+                <entry key="demo" value="${rest.msystem.remote}"></entry>
+                <!--集中管控部署模式下  流程的服务地址 需要修改为 自己业务系统暴露的地址-->
+                <entry key="bpmengine" value="${rest.bpm.remote}"></entry>
+                <entry key="bpmadmin" value="${rest.bpm.remote}"></entry>
+                <entry key="bpmclient" value="${rest.bpm.remote}"></entry>
+                <!--集中管控部署模式下  表单的服务地址 需要修改为 自己业务系统暴露的地址-->
+                <entry key="eform" value="${rest.eform.remote}"></entry>
+                <entry key="eformclient" value="${rest.eform.remote}"></entry>
+                <entry key="db" value="${rest.eform.remote}"></entry>
+                <!--Excel导入-->
+                <entry key="imp" value="${rest.msystem.remote}"></entry>
+                <!--行数据授权-->
+                <entry key="rowdataauthorization" value="${rest.msystem.remote}"></entry>
+                <!--微服务监控日志-->
+                <entry key="monitor" value="${rest.msystem.remote}"></entry>
+                <!--API中心-->
+                <entry key="apiCenter" value="${rest.msystem.remote}"></entry>
+            </map>
+        </property>
+    </bean>
+</beans>

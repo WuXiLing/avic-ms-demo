@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- 使用服务器缓存配置 -->
+	<bean id="jedisSentinelPool" class="avicit.platform6.core.redis.JedisSentinelPool">
+		
+		<constructor-arg index="0">
+			<list>
+			</list>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<set>
+				<value>${redis.host}:${redis.port}</value>
+			</set>
+		</constructor-arg>
+		<constructor-arg index="2" ref="jedisPoolConfig" />
+		<constructor-arg index="3">
+			<!-- redis 连接超时设置，默认 2000 -->
+			<value>${redis.timeout}</value>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<!-- redis 连接密码 -->
+			<value>${redis.password}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.maxTotal}" />
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="maxWaitMillis" value="${redis.maxWaitMillis}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+		<property name="TestOnReturn" value="${redis.TestOnReturn}"/>
+	</bean>
+	<bean id="baseCacheManager" class="avicit.platform6.core.redisCacheManager.BaseCacheManager">
+		<property name="jedisSentinelPool" ref="jedisSentinelPool"/>
+		<property name="commonHibernateDao" ref="commonHibernateDao2"/>
+	</bean>
+	
+	<bean id="baseCacheMybatisManager" class="avicit.platform6.core.redisCacheManager.BaseCacheMybatisManager">
+		<property name="jedisSentinelPool" ref="jedisSentinelPool"/>
+		
+		<property name="redisTemplate" ref="redisTemplate"/>
+	</bean>
+	
+	
+	<bean id="redisTemplate" class="avicit.platform6.core.redis.RedisTemplate">
+		<property name="jedisSentinelPool" ref="jedisSentinelPool"/>
+	</bean>
+</beans>

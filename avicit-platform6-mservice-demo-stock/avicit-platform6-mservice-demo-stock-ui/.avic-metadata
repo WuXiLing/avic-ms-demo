@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<project-module archive="stock-ui.war" context-root="/stock-ui" id="eclipse.1559358998547" j2ee-spec="5.0" name="stock-ui" type="WEB">
+    <attributes>
+        <attribute name="webdir" value="src\main\webapp"/>
+        <attribute name="javadir" value="src\main\java"/>
+        <attribute name="protype" value="maven"/>
+        <attribute name="servicetype" value="zookeeper"/>
+        <attribute name="layertype" value="ui"/>
+        <attribute name="parentName" value="stock"/>
+    </attributes>
+</project-module>

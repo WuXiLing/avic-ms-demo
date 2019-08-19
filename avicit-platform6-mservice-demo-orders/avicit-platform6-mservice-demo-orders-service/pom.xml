@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>avicit.platform6</groupId>
+		<artifactId>avicit-platform6-mservice-demo-orders</artifactId>
+		<version>6.3.5-SNAPSHOT</version>
+	</parent>
+	<artifactId>avicit-platform6-mservice-demo-orders-service</artifactId>
+	<name>avicit-platform6-mservice-demo-orders-service</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-mservice-demo-orders-pub</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-mservice-demo-goods-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-mservice-demo-stock-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-api</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<!-- 记录系统日志 -->
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-component</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<!-- 电子表单依赖 start -->
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-eformclient</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<!-- 电子表单依赖 end -->
+		<!-- 流程依赖 start -->
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-bpmclient</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+		<!-- 流程模块需要依赖这个，但是依赖后会作为bpm服务端，启动报错 -->
+		<!-- <dependency> <groupId>avicit.platform6</groupId> <artifactId>avicit-platform6-bpmengine</artifactId> 
+			<version>${platform6-version}</version> </dependency> -->
+		<!-- 流程依赖 end -->
+	</dependencies>
+	<description>组件的后台服务项目，提供组件的后台服务，包括rest、service、dao和mapper</description>
+</project>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>avicit.platform6</groupId>
+		<artifactId>avicit-platform6-mservice-demo-stock</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>avicit-platform6-mservice-demo-stock-ui</artifactId>
+	<name>avicit-platform6-mservice-demo-stock-ui</name>
+	<url>http://maven.apache.org</url>
+	<packaging>war</packaging>
+	
+	<dependencies>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-mservice-demo-stock-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api-version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>avicit.platform6</groupId>
+			<artifactId>avicit-platform6-api</artifactId>
+			<version>${platform6-version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>${project.name}</finalName>
+	</build>
+	<description>组件的前端项目，包括组件的jsp，js和controller</description>
+</project>

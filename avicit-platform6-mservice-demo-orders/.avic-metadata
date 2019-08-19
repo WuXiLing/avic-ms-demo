@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<project-module archive="orders.war" context-root="/orders" id="eclipse.1559355258979" j2ee-spec="5.0" name="orders" type="WEB">
+    <attributes>
+        <attribute name="protype" value="maven"/>
+        <attribute name="servicetype" value="zookeeper"/>
+        <attribute name="layertype" value="parent"/>
+        <attribute name="parentName" value="orders"/>
+    </attributes>
+</project-module>
