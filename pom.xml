@@ -119,8 +119,8 @@
 			<releases>
                 <enabled>false</enabled>
             </releases>
-            <id>bj-central</id>
-            <name>bj-release</name>
+             <id>artifactory-central</id>
+            <name>libs-release</name>
             <url>http://10.216.38.194:8081/artifactory/libs-release</url>
         </repository>
         <repository>
@@ -130,8 +130,8 @@
 			<releases>
                 <enabled>false</enabled>
             </releases>
-            <id>bj-snapshots</id>
-            <name>bj-snapshot</name>
+             <id>artifactory-snapshots</id>
+            <name>libs-snapshot</name>
             <url>http://10.216.38.194:8081/artifactory/libs-snapshot</url>
         </repository>
         <repository>
@@ -141,8 +141,8 @@
 			<releases>
                 <enabled>false</enabled>
             </releases>
-            <id>bj-public</id>
-            <name>bj-public</name>
+           <id>libs-public</id>
+            <name>libs-public</name>
             <url>http://10.216.38.194:8081/artifactory/libs-public-local</url>
         </repository>
         <repository>
@@ -154,14 +154,14 @@
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
-            <id>artifactory-central</id>
-            <name>libs-release</name>
+            <id>xa-central</id>
+            <name>xa-release</name>
             <url>http://10.216.60.240:9999/nexus/content/repositories/releases</url>
         </repository>
         <repository>
             <snapshots/>
-            <id>artifactory-snapshots</id>
-            <name>libs-snapshot</name>
+            <id>xa-snapshots</id>
+            <name>xa-snapshot</name>
             <url>http://10.216.60.240:9999/nexus/content/repositories/snapshots</url>
         </repository>
         <!--ojdbc6-->
@@ -187,8 +187,8 @@
     <!--插件库-->
     <pluginRepositories>
         <pluginRepository>
-            <id>libs-public</id>
-            <name>libs-public</name>
+            <id>xa-public</id>
+            <name>xa-public</name>
             <url>http://10.216.60.240:9999/nexus/content/groups/public/</url>
         </pluginRepository>
         <pluginRepository>
