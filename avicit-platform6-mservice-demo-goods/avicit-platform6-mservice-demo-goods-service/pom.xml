@@ -40,40 +40,9 @@
 		
 		<dependency>
 			<groupId>avicit.platform6</groupId>
-			<artifactId>avicit-platform6-idempotence-core</artifactId>
-			<version>1.0.0</version>
+			<artifactId>avicit-platform6-idempotence-sdk</artifactId>
+			<version>${platform6-version}</version>
 		</dependency>
-		
-		<!-- 电子表单依赖 start -->
-		<!-- <dependency>
-			<groupId>avicit.platform6</groupId>
-			<artifactId>avicit-platform6-eformclient</artifactId>
-			<version>${platform6-version}</version>
-		</dependency> -->
-		<!-- 电子表单依赖 end -->
-		<!-- 流程依赖 start -->
-		<!-- <dependency>
-			<groupId>avicit.platform6</groupId>
-			<artifactId>avicit-platform6-bpmclient</artifactId>
-			<version>${platform6-version}</version>
-		</dependency> -->
-		<!-- 流程模块需要依赖这个，但是依赖后会作为bpm服务端，启动报错 -->
- 		<!-- <dependency>
-			<groupId>avicit.platform6</groupId>
-			<artifactId>avicit-platform6-bpmengine</artifactId>
-			<version>${platform6-version}</version>
-		</dependency> -->
-		<!-- 流程依赖 end -->
-		<!-- <dependency>
-	        <groupId>org.jboss.resteasy</groupId>
-	         <artifactId>resteasy-multipart-provider</artifactId>
-	       <version>3.0.9.Final</version>
-	    </dependency> -->
-		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-		<!-- <dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency> -->
 
 	</dependencies>
 	<description>组件的后台服务项目，提供组件的后台服务，包括rest、service、dao和mapper</description>

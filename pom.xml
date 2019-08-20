@@ -96,16 +96,16 @@
 		</profile>
 	</profiles>
 	
-	    <!--发布库-->
+	<!--发布库-->
     <distributionManagement>
         <repository>
-            <id>artifactory-central</id>
-            <name>Artifactory Release Repository</name>
+            <id>nexus-releases</id>
+            <name>nexus release Repository</name>
             <url>http://117.36.76.70:9990/nexus/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
-            <id>artifactory-snapshots</id>
-            <name>Artifactory Snapshot Repository</name>
+            <id>nexus-snapshots</id>
+            <name>nexus Snapshot Repository</name>
             <url>http://117.36.76.70:9990/nexus/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
@@ -114,18 +114,9 @@
     <repositories>
         
         <repository>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>artifactory-central</id>
-            <name>libs-release</name>
-            <url>http://117.36.76.70:9990/nexus/content/repositories/releases</url>
-        </repository>
-        <repository>
-            <snapshots/>
-            <id>artifactory-snapshots</id>
-            <name>libs-snapshot</name>
-            <url>http://117.36.76.70:9990/nexus/content/repositories/snapshots</url>
+            <id>avic-xa-public</id>
+            <name>avic-xa-public</name>
+            <url>http://117.36.76.70:9990/nexus/content/groups/public/</url>
         </repository>
 		<repository>
             <id>ali</id>
